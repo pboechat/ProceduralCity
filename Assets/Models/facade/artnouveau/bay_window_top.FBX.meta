@@ -1,0 +1,130 @@
+fileFormatVersion: 2
+guid: 7eb6c50735d23ea4fa3724fc6ede8779
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Box007
+    100002: Box008
+    100004: Plane024
+    100006: Plane025
+    100008: Plane026
+    100010: Plane027
+    100012: Plane028
+    100014: //RootNode
+    100016: frame
+    100018: glass
+    100020: glass 1
+    100022: glass 2
+    100024: glass 3
+    100026: glass 4
+    100028: pedimemt
+    400000: Box007
+    400002: Box008
+    400004: Plane024
+    400006: Plane025
+    400008: Plane026
+    400010: Plane027
+    400012: Plane028
+    400014: //RootNode
+    400016: frame
+    400018: glass
+    400020: glass 1
+    400022: glass 2
+    400024: glass 3
+    400026: glass 4
+    400028: pedimemt
+    2300000: Box007
+    2300002: Box008
+    2300004: Plane024
+    2300006: Plane025
+    2300008: Plane026
+    2300010: Plane027
+    2300012: Plane028
+    2300014: frame
+    2300016: glass
+    2300018: glass 1
+    2300020: glass 2
+    2300022: glass 3
+    2300024: glass 4
+    2300026: pedimemt
+    3300000: Box007
+    3300002: Box008
+    3300004: Plane024
+    3300006: Plane025
+    3300008: Plane026
+    3300010: Plane027
+    3300012: Plane028
+    3300014: frame
+    3300016: glass
+    3300018: glass 1
+    3300020: glass 2
+    3300022: glass 3
+    3300024: glass 4
+    3300026: pedimemt
+    4300000: Box007
+    4300002: Box008
+    4300004: Plane024
+    4300006: Plane025
+    4300008: Plane026
+    4300010: Plane027
+    4300012: Plane028
+    4300014: pedimemt
+    4300016: frame
+    4300018: glass
+    4300020: glass
+    4300022: glass
+    4300024: glass
+    4300026: glass
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 0
+  userData: 

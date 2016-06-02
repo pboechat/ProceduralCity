@@ -1,0 +1,23 @@
+name=artdeco
+size=512
+texture=Assets/Textures/atlases/artdeco.png
+atlasRects:
+antennae=[0, 0, 32, 32]
+footer=[0, 32, 32, 32]
+airconditioner=[0, 64, 128, 128]
+exhaust2=[0, 192, 128, 128]
+window_double2=[32, 0, 64, 64]
+glass=[96, 0, 32, 32]
+exhaust1=[0, 320, 128, 128]
+window_triple2=[0, 448, 64, 64]
+chimney=[64, 448, 64, 64]
+window=[128, 0, 64, 64]
+column=[192, 0, 64, 64]
+watertank=[256, 0, 128, 128]
+window_triple1=[128, 64, 64, 64]
+pediment2=[384, 0, 128, 128]
+window_double1=[96, 32, 32, 32]
+pediment1=[192, 64, 64, 64]
+header=[128, 128, 32, 32]
+terrace=[128, 160, 128, 128]
+plaster=[128, 288, 85, 64]

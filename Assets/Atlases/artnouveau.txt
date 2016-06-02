@@ -1,0 +1,23 @@
+name=artnouveau
+size=512
+texture=Assets/Textures/atlases/artnouveau.png
+atlasRects:
+exhaust1=[0, 0, 128, 128]
+exhaust2=[0, 128, 128, 128]
+window_bottom=[0, 256, 64, 64]
+glass2=[0, 320, 32, 32]
+window_top=[0, 352, 64, 64]
+glass1=[32, 320, 32, 32]
+window_top_pediment=[0, 416, 64, 64]
+chimney=[64, 256, 64, 64]
+airconditioner=[64, 320, 128, 128]
+antennae=[0, 480, 32, 32]
+window=[64, 448, 64, 64]
+watertank=[128, 0, 128, 128]
+footer1=[128, 128, 128, 128]
+footer1_glass=[128, 448, 64, 64]
+bay_window=[128, 256, 64, 64]
+bay_window_top_pediment=[192, 256, 128, 128]
+terrace=[192, 384, 128, 128]
+plaster=[256, 0, 85, 64]
+bricks=[256, 64, 85, 64]

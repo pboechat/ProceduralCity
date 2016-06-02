@@ -1,0 +1,21 @@
+name=chicagoschool
+size=512
+texture=Assets/Textures/atlases/chicagoschool.png
+atlasRects:
+window=[0, 0, 64, 64]
+glass1=[0, 64, 32, 32]
+exhaust2=[0, 96, 128, 128]
+glass2=[32, 64, 32, 32]
+chimney=[64, 0, 64, 64]
+airconditioner=[0, 224, 128, 128]
+exhaust1=[0, 352, 128, 128]
+footer1=[128, 0, 128, 128]
+footer1_glass=[256, 0, 64, 64]
+footer2=[320, 0, 128, 128]
+footer2_glass=[256, 64, 64, 64]
+bay_window=[448, 0, 64, 64]
+entablature=[448, 64, 64, 64]
+antennae=[64, 64, 32, 32]
+watertank=[128, 128, 128, 128]
+terrace=[128, 256, 128, 128]
+terracota_bricks=[96, 64, 32, 32]

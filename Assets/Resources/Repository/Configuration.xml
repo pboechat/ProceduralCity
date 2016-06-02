@@ -1,0 +1,722 @@
+<ModelRepository root="Repository">
+	<Categories>
+		<Category name="facade_item">
+			symbol
+			index
+			size
+			allows_detail
+			top_variant
+			bottom_variant
+			style
+		</Category>
+		<Category name="top_variant">
+			size
+			allows_header
+			allows_detail
+		</Category>
+		<Category name="bottom_variant">
+			size
+			allows_detail
+		</Category>
+		<Category name="header">
+			corner
+			style
+		</Category>
+		<Category name="header_corner">
+		</Category>
+		<Category name="ground_floor">
+			height
+			type
+			corner
+			style
+		</Category>
+		<Category name="ground_floor_corner">
+		</Category>
+		<Category name="rooftop_item">
+			style
+		</Category>
+		<Category name="railing">
+			style
+		</Category>
+	</Categories>
+	<Items>
+		<!-- BROWNSTONE (COMBINED) -->
+		<Item uid="brownstone_window1" path="facade/brownstone/window1" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=1
+				size=1
+				allows_detail=true
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_window2" path="facade/brownstone/window2" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=2
+				size=1
+				allows_detail=true
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_window3" path="facade/brownstone/window3" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=3
+				size=1
+				allows_detail=true
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_window4" path="facade/brownstone/window4" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=4
+				size=1
+				allows_detail=true
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_bay_window" path="facade/brownstone/bay_window" category="facade_item">
+			<Metadata>
+				symbol=y
+				index=1
+				size=2
+				allows_detail=false
+				top_variant=brownstone_bay_window_top
+				bottom_variant=brownstone_bay_window_bottom
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_bay_window_top" path="facade/brownstone/bay_window_top" category="top_variant">
+			<Metadata>
+				size=2
+				allows_header=false
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_bay_window_bottom" path="facade/brownstone/bay_window_bottom" category="bottom_variant">
+			<Metadata>
+				size=2
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_door1" path="facade/brownstone/door1" category="facade_item">
+			<Metadata>
+				symbol=d
+				index=1
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_door2" path="facade/brownstone/door2" category="facade_item">
+			<Metadata>
+				symbol=d
+				index=2
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_door3" path="facade/brownstone/door3" category="facade_item">
+			<Metadata>
+				symbol=d
+				index=3
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_balcony1" path="facade/brownstone/balcony1" category="facade_item">
+			<Metadata>
+				symbol=b
+				index=1
+				size=2
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_balcony2" path="facade/brownstone/balcony2" category="facade_item">
+			<Metadata>
+				symbol=b
+				index=2
+				size=2
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_awning1" path="facade/brownstone/awning1" category="facade_item">
+			<Metadata>
+				symbol=a
+				index=1
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_awning2" path="facade/brownstone/awning2" category="facade_item">
+			<Metadata>
+				symbol=a
+				index=2
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_entablature" path="facade/brownstone/entablature" category="header">
+			<Metadata>
+				corner=brownstone_entablature_corner
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_entablature_corner" path="facade/brownstone/entablature_corner" category="header_corner">
+		</Item>
+		<Item uid="brownstone_footer1" path="facade/brownstone/footer1" category="ground_floor">
+			<Metadata>
+				height=1.5
+				type=footer
+				corner=none
+				style=brownstone
+			</Metadata>
+		</Item>
+		<!-- BROWNSTONE (COMBINED) -->
+		<!-- CHICAGOSCHOOL (COMBINED) -->
+		<Item uid="chicagoschool_bay_window" path="facade/chicagoschool/bay_window" category="facade_item">
+			<Metadata>
+				symbol=b
+				index=1
+				size=1
+				allows_detail=false
+				top_variant=chicagoschool_bay_window_top
+				bottom_variant=chicagoschool_bay_window_bottom
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_double_window" path="facade/chicagoschool/double_window" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=1
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_triple_window" path="facade/chicagoschool/triple_window" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=2
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_bay_window_bottom" path="facade/chicagoschool/bay_window_bottom" category="bottom_variant">
+			<Metadata>
+				size=1
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_bay_window_top" path="facade/chicagoschool/bay_window_top" category="top_variant">
+			<Metadata>
+				size=1
+				allows_header=true
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_entablature" path="facade/chicagoschool/entablature" category="header">
+			<Metadata>
+				corner=chicagoschool_entablature_corner
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_entablature_corner" path="facade/chicagoschool/entablature_corner" category="header_corner">
+		</Item>
+		<Item uid="chicagoschool_footer1" path="facade/chicagoschool/footer1" category="ground_floor">
+			<Metadata>
+				height=6
+				type=footer
+				corner=chicagoschool_footer1_corner
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_footer2" path="facade/chicagoschool/footer2" category="ground_floor">
+			<Metadata>
+				height=6
+				type=footer
+				corner=chicagoschool_footer2_corner
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_footer1_corner" path="facade/chicagoschool/footer1_corner" category="ground_floor_corner">
+		</Item>
+		<Item uid="chicagoschool_footer2_corner" path="facade/chicagoschool/footer2_corner" category="ground_floor_corner">
+		</Item>
+		<!-- CHICAGOSCHOOL (COMBINED) -->
+		<!-- MODERNIST (COMBINED) -->
+		<Item uid="modernist_double_window" path="facade/modernist/double_window" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=1
+				size=1
+				allows_detail=true
+				top_variant=none
+				bottom_variant=none
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_module1" path="facade/modernist/module1" category="facade_item">
+			<Metadata>
+				symbol=m
+				index=1
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_module2" path="facade/modernist/module2" category="facade_item">
+			<Metadata>
+				symbol=m
+				index=2
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_module3" path="facade/modernist/module3" category="facade_item">
+			<Metadata>
+				symbol=m
+				index=3
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_module4" path="facade/modernist/module4" category="facade_item">
+			<Metadata>
+				symbol=m
+				index=4
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_pilotis1" path="facade/modernist/pilotis1" category="ground_floor">
+			<Metadata>
+				height=3
+				type=pilotis
+				corner=none
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_pilotis2" path="facade/modernist/pilotis2" category="ground_floor">
+			<Metadata>
+				height=3
+				type=pilotis
+				corner=none
+				style=modernist
+			</Metadata>
+		</Item>
+		<!-- MODERNIST (COMBINED) -->
+		<!-- ARTNOUVEAU (COMBINED) -->
+		<Item uid="artnouveau_window" path="facade/artnouveau/window" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=1
+				size=1
+				allows_detail=true
+				top_variant=artnouveau_window_top
+				bottom_variant=artnouveau_window_bottom
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_bay_window" path="facade/artnouveau/bay_window" category="facade_item">
+			<Metadata>
+				symbol=b
+				index=1
+				size=1
+				allows_detail=false
+				top_variant=artnouveau_bay_window_top
+				bottom_variant=none
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_bay_window_top" path="facade/artnouveau/bay_window_top" category="top_variant">
+			<Metadata>
+				size=1
+				allows_header=true
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_window_bottom" path="facade/artnouveau/window_bottom" category="bottom_variant">
+			<Metadata>
+				size=1
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_window_top" path="facade/artnouveau/window_top" category="top_variant">
+			<Metadata>
+				size=1
+				allows_header=true
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_footer1" path="facade/artnouveau/footer1" category="ground_floor">
+			<Metadata>
+				height=6
+				type=footer
+				corner=none
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<!-- ARTNOUVEAU (COMBINED) -->
+		<!-- ARTDECO (COMBINED) -->
+		<Item uid="artdeco_window" path="facade/artdeco/window" category="facade_item">
+			<Metadata>
+				symbol=w
+				index=1
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_column" path="facade/artdeco/column" category="facade_item">
+			<Metadata>
+				symbol=c
+				index=1
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_double1" path="facade/artdeco/window_double1" category="facade_item">
+			<Metadata>
+				symbol=d
+				index=1
+				size=2
+				allows_detail=false
+				top_variant=artdeco_window_double1_top
+				bottom_variant=artdeco_window_double1_bottom
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_double1_top" path="facade/artdeco/window_double1_top" category="top_variant">
+			<Metadata>
+				size=2
+				allows_header=true
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_double1_bottom" path="facade/artdeco/window_double1_bottom" category="bottom_variant">
+			<Metadata>
+				size=2
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_double2" path="facade/artdeco/window_double2" category="facade_item">
+			<Metadata>
+				symbol=d
+				index=2
+				size=1
+				allows_detail=false
+				top_variant=none
+				bottom_variant=none
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_triple1" path="facade/artdeco/window_triple1" category="facade_item">
+			<Metadata>
+				symbol=t
+				index=1
+				size=2
+				allows_detail=false
+				top_variant=artdeco_window_triple1_top
+				bottom_variant=artdeco_window_triple1_bottom
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_triple1_top" path="facade/artdeco/window_triple1_top" category="top_variant">
+			<Metadata>
+				size=2
+				allows_header=false
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_triple1_bottom" path="facade/artdeco/window_triple1_bottom" category="bottom_variant">
+			<Metadata>
+				size=2
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_triple2" path="facade/artdeco/window_triple2" category="facade_item">
+			<Metadata>
+				symbol=t
+				index=2
+				size=2
+				allows_detail=false
+				top_variant=artdeco_window_triple2_top
+				bottom_variant=none
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_window_triple2_top" path="facade/artdeco/window_triple2_top" category="top_variant">
+			<Metadata>
+				size=2
+				allows_header=false
+				allows_detail=false
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_footer" path="facade/artdeco/footer" category="ground_floor">
+			<Metadata>
+				height=2
+				type=footer
+				corner=none
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_header" path="facade/artdeco/header" category="header">
+			<Metadata>
+				corner=none
+				style=artdeco
+			</Metadata>
+		</Item>
+		<!-- ARTDECO (COMBINED) -->
+		<!-- ROOFTOP ITEMS (COMBINED) -->
+		<Item uid="brownstone_exhaust1" path="facade/brownstone/exhaust1" category="rooftop_item">
+			<Metadata>
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_exhaust2" path="facade/brownstone/exhaust2" category="rooftop_item">
+			<Metadata>
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_exhaust3" path="facade/brownstone/exhaust3" category="rooftop_item">
+			<Metadata>
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_chimney" path="facade/brownstone/chimney" category="rooftop_item">
+			<Metadata>
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_antennae" path="facade/brownstone/antennae" category="rooftop_item">
+			<Metadata>
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="brownstone_water_tank" path="facade/brownstone/water_tank" category="rooftop_item">
+			<Metadata>
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_exhaust1" path="facade/chicagoschool/exhaust1" category="rooftop_item">
+			<Metadata>
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_exhaust2" path="facade/chicagoschool/exhaust2" category="rooftop_item">
+			<Metadata>
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_exhaust3" path="facade/chicagoschool/exhaust3" category="rooftop_item">
+			<Metadata>
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_chimney" path="facade/chicagoschool/chimney" category="rooftop_item">
+			<Metadata>
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_antennae" path="facade/chicagoschool/antennae" category="rooftop_item">
+			<Metadata>
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="chicagoschool_water_tank" path="facade/chicagoschool/water_tank" category="rooftop_item">
+			<Metadata>
+				style=chicagoschool
+			</Metadata>
+		</Item>
+		<Item uid="modernist_exhaust1" path="facade/modernist/exhaust1" category="rooftop_item">
+			<Metadata>
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_exhaust2" path="facade/modernist/exhaust2" category="rooftop_item">
+			<Metadata>
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_exhaust3" path="facade/modernist/exhaust3" category="rooftop_item">
+			<Metadata>
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_chimney" path="facade/modernist/chimney" category="rooftop_item">
+			<Metadata>
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_antennae" path="facade/modernist/antennae" category="rooftop_item">
+			<Metadata>
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="modernist_water_tank" path="facade/modernist/water_tank" category="rooftop_item">
+			<Metadata>
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_exhaust1" path="facade/artnouveau/exhaust1" category="rooftop_item">
+			<Metadata>
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_exhaust2" path="facade/artnouveau/exhaust2" category="rooftop_item">
+			<Metadata>
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_exhaust3" path="facade/artnouveau/exhaust3" category="rooftop_item">
+			<Metadata>
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_chimney" path="facade/artnouveau/chimney" category="rooftop_item">
+			<Metadata>
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_antennae" path="facade/artnouveau/antennae" category="rooftop_item">
+			<Metadata>
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<Item uid="artnouveau_water_tank" path="facade/artnouveau/water_tank" category="rooftop_item">
+			<Metadata>
+				style=artnouveau
+			</Metadata>
+		</Item>
+		<Item uid="international_exhaust1" path="facade/international/exhaust1" category="rooftop_item">
+			<Metadata>
+				style=international
+			</Metadata>
+		</Item>
+		<Item uid="international_exhaust2" path="facade/international/exhaust2" category="rooftop_item">
+			<Metadata>
+				style=international
+			</Metadata>
+		</Item>
+		<Item uid="international_exhaust3" path="facade/international/exhaust3" category="rooftop_item">
+			<Metadata>
+				style=international
+			</Metadata>
+		</Item>
+		<Item uid="international_chimney" path="facade/international/chimney" category="rooftop_item">
+			<Metadata>
+				style=international
+			</Metadata>
+		</Item>
+		<Item uid="international_antennae" path="facade/international/antennae" category="rooftop_item">
+			<Metadata>
+				style=international
+			</Metadata>
+		</Item>
+		<Item uid="international_water_tank" path="facade/international/water_tank" category="rooftop_item">
+			<Metadata>
+				style=international
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_exhaust1" path="facade/artdeco/exhaust1" category="rooftop_item">
+			<Metadata>
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_exhaust2" path="facade/artdeco/exhaust2" category="rooftop_item">
+			<Metadata>
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_exhaust3" path="facade/artdeco/exhaust3" category="rooftop_item">
+			<Metadata>
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_chimney" path="facade/artdeco/chimney" category="rooftop_item">
+			<Metadata>
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_antennae" path="facade/artdeco/antennae" category="rooftop_item">
+			<Metadata>
+				style=artdeco
+			</Metadata>
+		</Item>
+		<Item uid="artdeco_water_tank" path="facade/artdeco/water_tank" category="rooftop_item">
+			<Metadata>
+				style=artdeco
+			</Metadata>
+		</Item>
+		<!-- ROOFTOP ITEMS (COMBINED) -->
+		<!-- RAILINGS -->
+		<Item uid="brownstone_railings" path="facade/brownstone/railing" category="railing">
+			<Metadata>
+				style=brownstone
+			</Metadata>
+		</Item>
+		<Item uid="modernist_railings" path="facade/modernist/railing" category="railing">
+			<Metadata>
+				style=modernist
+			</Metadata>
+		</Item>
+		<Item uid="international_railings" path="facade/international/railing" category="railing">
+			<Metadata>
+				style=international
+			</Metadata>
+		</Item>
+		<!-- RAILINGS -->
+	</Items>
+</ModelRepository>

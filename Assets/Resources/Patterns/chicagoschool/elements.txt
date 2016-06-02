@@ -1,0 +1,6 @@
+w2 b1 w2 b1
+w2 b1 w2 b1
+w2 b1 w2 b1
+w2 b1 w2 b1
+-
+w2

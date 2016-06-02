@@ -1,0 +1,24 @@
+name=modernist
+size=512
+texture=Assets/Textures/atlases/modernist.png
+atlasRects:
+double_window=[0, 0, 32, 32]
+pilotis1=[0, 32, 64, 64]
+exhaust2=[0, 96, 128, 128]
+module3=[64, 0, 64, 64]
+module3_glass=[32, 0, 32, 32]
+module1=[0, 224, 128, 128]
+module4=[0, 352, 64, 64]
+module4_glass=[64, 64, 32, 32]
+exhaust1=[64, 352, 128, 128]
+chimney=[0, 416, 64, 64]
+airconditioner=[128, 0, 128, 128]
+railing=[128, 128, 64, 64]
+watertank=[128, 192, 128, 128]
+pilotis2=[192, 128, 64, 64]
+module2=[192, 320, 128, 128]
+module2_glass=[256, 0, 128, 128]
+antennae=[96, 64, 32, 32]
+terrace=[256, 128, 128, 128]
+concrete=[256, 256, 64, 48]
+plaster=[192, 448, 64, 48]

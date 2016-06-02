@@ -1,0 +1,7 @@
+public enum GroundFloor
+{
+	FIRST_FLOOR_BARE,
+	FIRST_FLOOR_FOOTER,
+	STORE,
+	PILOTIS
+}

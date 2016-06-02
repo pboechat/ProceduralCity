@@ -1,0 +1,11 @@
+w1
+-
+w1 b1 w1
+-
+w1 w1 b1 w1 w1
+-
+b1 w1 w1 w1 b1
+-
+w1 w1 w1
+w1 w1 w1
+b1 w1 b1

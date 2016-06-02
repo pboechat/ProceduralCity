@@ -1,0 +1,17 @@
+name=international
+size=512
+texture=Assets/Textures/atlases/international.png
+atlasRects:
+watertank=[0, 0, 128, 128]
+exhaust1=[0, 128, 128, 128]
+chimney=[0, 256, 64, 64]
+entablature=[0, 320, 64, 64]
+airconditioner=[0, 384, 128, 128]
+exhaust2=[64, 256, 128, 128]
+antennae=[128, 384, 32, 32]
+terrace=[160, 384, 128, 128]
+glass_curtain1=[128, 0, 64, 64]
+glass_curtain2=[128, 64, 64, 64]
+glass_curtain3=[128, 128, 64, 64]
+glass_curtain4=[128, 192, 64, 64]
+glass_curtain5=[288, 0, 64, 64]
