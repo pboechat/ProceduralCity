@@ -41,6 +41,7 @@ public class ProceduralCity : MonoBehaviour
 			_seed = milliseconds;
 		}
 		UnityEngine.Random.seed = _seed;
+        Debug.Log("seed: " + _seed);
 		
 		_pipeline.Run (_roadNetworkParameters, _architectureStyle);
 	}

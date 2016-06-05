@@ -22,14 +22,14 @@ namespace Grid
 			int halfHeight = (height + 1) / 2;
 			int halfWidth = (width + 1) / 2;
 			
-			float yOffset = worstCaseGridHeight;
+			float yOffset = worstCaseGridHalfHeight + (float)padding;
 			for (int y = halfHeight - 1; y >= 0; y--) {
 				cells [y] = new Cell[width];
 				
 				int cellHeight = Random.Range (minCellHeight, maxCellHeight + 1);
 				float halfCellHeight = cellHeight / 2.0f;
 				
-				float xOffset = worstCaseGridWidth;
+				float xOffset = worstCaseGridHalfWidth;
 				for (int x = halfWidth - 1; x >= 0; x--) {
 					int cellWidth = Random.Range (minCellWidth, maxCellWidth + 1);
 					float halfCellWidth = cellWidth / 2.0f;
@@ -37,7 +37,7 @@ namespace Grid
 					xOffset -= (cellWidth + padding);
 				}
 				
-				xOffset = worstCaseGridWidth + (float)padding;
+				xOffset = worstCaseGridHalfWidth + (float)padding;
 				for (int x = halfWidth; x < width; x++) {
 					int cellWidth = Random.Range (minCellWidth, maxCellWidth + 1);
 					float halfCellWidth = cellWidth / 2.0f;
@@ -48,7 +48,7 @@ namespace Grid
 				yOffset -= (cellHeight + padding);
 			}
 			
-			yOffset = worstCaseGridHalfHeight + (float)padding;
+			yOffset = worstCaseGridHalfHeight + 2.0f * padding;
 			for (int y = halfHeight; y < height; y++) {
 				cells [y] = new Cell[width];
 				

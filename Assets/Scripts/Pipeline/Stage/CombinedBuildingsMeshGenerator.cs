@@ -895,81 +895,88 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 			// ==============================
 			
 			IResultSet resultSet;
-			float facadeYOffset;
-			switch (architectureStyle.groundFloor) {
-			case GroundFloor.FIRST_FLOOR_BARE:
-				facadeYOffset = 0;
-				break;
-			case GroundFloor.FIRST_FLOOR_FOOTER:
-				resultSet = Repository.List ("ground_floor").Filter ("type", "footer").Filter ("style", architectureStyle.name);
-				
-				if (resultSet.Count () == 0) {
-					throw new Exception ("architecture style doesn't have any footer model");
-				}
-				
-				IModel footerModel = resultSet.Random ();
-				facadeYOffset = footerModel.MetadataAsFloat ("height");
-				
-				CreateGroundFloorItem (building, footerModel, hue, buildingCombineInstances);
-				
-				break;
-			case GroundFloor.STORE:
-				// TODO:
-				facadeYOffset = 0;
-				break;
-			case GroundFloor.PILOTIS:
-				resultSet = Repository.List ("ground_floor").Filter ("type", "pilotis").Filter ("style", architectureStyle.name);
-				
-				if (resultSet.Count () == 0) {
-					throw new Exception ("architecture style doesn't have any pilotis model");
-				}
-				
-				IModel pilotisModel = resultSet.Random ();
-				facadeYOffset = pilotisModel.MetadataAsInt ("height");
-				
-				CreateGroundFloorItem (building, pilotisModel, hue, buildingCombineInstances);
-				// TODO:
-				CreateFloor (building, terraceTextureRect, terraceBumpTextureRect, buildingCombineInstances);
-				
-				break;
-			default:
-				// FIXME: checking invariants
-				throw new Exception ("unknown ground floor: " + architectureStyle.groundFloor);
-			}
-			
-			// ==============================
-			// Header
-			// ==============================
-			
-			if (header != Header.NONE) {
-				resultSet = Repository.List ("header").Filter ("style", architectureStyle.name);
-				
-				if (resultSet.Count () == 0) {
-					throw new Exception ("architecture style doesn't have any header model");
-				}
-				
-				IModel headerModel = resultSet.Random ();
-				
-				CreateHeader (building, headerModel, hue, facadeYOffset, buildingCombineInstances);
-			}
-			
-			// ==============================
-			// Railing
-			// ==============================
-			
-			if (header != Header.ALL_AROUND) {
-				IModel railingModel = Repository.List ("railing").Filter ("style", architectureStyle.name).Single ();
-			
-				if (railingModel != null) {
-					CreateRailing (building, railingModel, hue, facadeYOffset, buildingCombineInstances);
-				}
-			}
-			
-			// ==============================
-			// Side Walls and Terrace
-			// ==============================
-			
-			CreateSideWallsAndTerrace (building, wallTextureRect, wallBumpTextureRect, terraceTextureRect, terraceBumpTextureRect, hue, facadeYOffset, buildingCombineInstances);
+			float facadeYOffset = 0;
+            switch (architectureStyle.groundFloor)
+            {
+                case GroundFloor.FIRST_FLOOR_BARE:
+                    facadeYOffset = 0;
+                    break;
+                case GroundFloor.FIRST_FLOOR_FOOTER:
+                    resultSet = Repository.List("ground_floor").Filter("type", "footer").Filter("style", architectureStyle.name);
+
+                    if (resultSet.Count() == 0)
+                    {
+                        throw new Exception("architecture style doesn't have any footer model");
+                    }
+
+                    IModel footerModel = resultSet.Random();
+                    facadeYOffset = footerModel.MetadataAsFloat("height");
+
+                    CreateGroundFloorItem(building, footerModel, hue, buildingCombineInstances);
+
+                    break;
+                case GroundFloor.STORE:
+                    // TODO:
+                    facadeYOffset = 0;
+                    break;
+                case GroundFloor.PILOTIS:
+                    resultSet = Repository.List("ground_floor").Filter("type", "pilotis").Filter("style", architectureStyle.name);
+
+                    if (resultSet.Count() == 0)
+                    {
+                        throw new Exception("architecture style doesn't have any pilotis model");
+                    }
+
+                    IModel pilotisModel = resultSet.Random();
+                    facadeYOffset = pilotisModel.MetadataAsInt("height");
+
+                    CreateGroundFloorItem(building, pilotisModel, hue, buildingCombineInstances);
+                    // TODO:
+                    CreateFloor(building, terraceTextureRect, terraceBumpTextureRect, buildingCombineInstances);
+
+                    break;
+                default:
+                    // FIXME: checking invariants
+                    throw new Exception("unknown ground floor: " + architectureStyle.groundFloor);
+            }
+
+            // ==============================
+            // Header
+            // ==============================
+
+            if (header != Header.NONE)
+            {
+                resultSet = Repository.List("header").Filter("style", architectureStyle.name);
+
+                if (resultSet.Count() == 0)
+                {
+                    throw new Exception("architecture style doesn't have any header model");
+                }
+
+                IModel headerModel = resultSet.Random();
+
+                CreateHeader(building, headerModel, hue, facadeYOffset, buildingCombineInstances);
+            }
+
+            // ==============================
+            // Railing
+            // ==============================
+
+            if (header != Header.ALL_AROUND)
+            {
+                IModel railingModel = Repository.List("railing").Filter("style", architectureStyle.name).Single();
+
+                if (railingModel != null)
+                {
+                    CreateRailing(building, railingModel, hue, facadeYOffset, buildingCombineInstances);
+                }
+            }
+
+            // ==============================
+            // Side Walls and Terrace
+            // ==============================
+
+            CreateSideWallsAndTerrace (building, wallTextureRect, wallBumpTextureRect, terraceTextureRect, terraceBumpTextureRect, hue, facadeYOffset, buildingCombineInstances);
 			
 			// ==============================
 			// Façades
@@ -990,19 +997,19 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 			
 			buildingGameObject.AddComponent<MeshRenderer> ().sharedMaterial = architectureStyle.textureAtlasMaterial;
 			buildingGameObject.AddComponent<MeshCollider> ().sharedMesh = buildingMesh;
-			
-			GameObject rooftopGameObject = new GameObject ("Rooftop Items");
-			
-			rooftopGameObject.transform.parent = buildingGameObject.transform;
-			rooftopGameObject.transform.localPosition = Vector3.zero;
-			rooftopGameObject.transform.localRotation = Quaternion.identity;
-			
-			Mesh rooftopItemsMesh = new Mesh ();
-			rooftopItemsMesh.CombineMeshes (rooftopCombinedInstances.ToArray ());
-			rooftopGameObject.AddComponent<MeshFilter> ().mesh = rooftopItemsMesh;
-			
-			rooftopGameObject.AddComponent<MeshRenderer> ().sharedMaterial = architectureStyle.textureAtlasMaterial;
-		}
+
+            GameObject rooftopGameObject = new GameObject("Rooftop Items");
+
+            rooftopGameObject.transform.parent = buildingGameObject.transform;
+            rooftopGameObject.transform.localPosition = Vector3.zero;
+            rooftopGameObject.transform.localRotation = Quaternion.identity;
+
+            Mesh rooftopItemsMesh = new Mesh();
+            rooftopItemsMesh.CombineMeshes(rooftopCombinedInstances.ToArray());
+            rooftopGameObject.AddComponent<MeshFilter>().mesh = rooftopItemsMesh;
+
+            rooftopGameObject.AddComponent<MeshRenderer>().sharedMaterial = architectureStyle.textureAtlasMaterial;
+        }
 	}
 
 }
