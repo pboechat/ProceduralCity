@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Building/Wall" {
 	Properties {
 		// Textures
@@ -94,7 +96,7 @@ Shader "Building/Wall" {
 		        
 		        o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 		        o.normal = v.normal;
-		        o.height = mul(_Object2World, v.vertex).y;
+		        o.height = mul(unity_ObjectToWorld, v.vertex).y;
 		        
 		        o.tangentSpaceLightDirection = mul(rotation, ObjSpaceLightDir(v.vertex));
 		        

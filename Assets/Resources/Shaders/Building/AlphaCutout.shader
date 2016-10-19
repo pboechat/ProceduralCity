@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Building/Alpha Cutout" {
 	Properties {
 		// Textures
@@ -38,7 +40,7 @@ Shader "Building/Alpha Cutout" {
 			float diff = unity_FogEnd.x - unity_FogStart.x;
 			float invDiff = 1.0f / diff;
 			data.fog = clamp ((unity_FogEnd.x - dist) * invDiff, 0.0, 1.0);
-			data.height = mul(_Object2World, v.vertex).y;
+			data.height = mul(unity_ObjectToWorld, v.vertex).y;
 		}
 		
 		//////////////////////////////////////////////////

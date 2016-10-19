@@ -7,7 +7,7 @@ public class ProceduralCity : MonoBehaviour
 	[SerializeField]
 	private bool _useSeed;
 	[SerializeField]
-	private int _seed;
+	private long _seed;
 	[SerializeField]
 	private Pipeline _pipeline;
 	[SerializeField]
@@ -37,10 +37,9 @@ public class ProceduralCity : MonoBehaviour
 		}
 		
 		if (!_useSeed) {
-			int milliseconds = (int)(DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);
-			_seed = milliseconds;
+			_seed = DateTime.Now.Ticks;
 		}
-		UnityEngine.Random.seed = _seed;
+		UnityEngine.Random.seed = (int)_seed;
         Debug.Log("seed: " + _seed);
 		
 		_pipeline.Run (_roadNetworkParameters, _architectureStyle);
