@@ -30,6 +30,14 @@ public class ProceduralCity : MonoBehaviour
         }
     }
 
+    public int RoadWidth
+    {
+        get
+        {
+            return _roadNetworkParameters.roadWidth;
+        }
+    }
+
     void Start ()
 	{
 		if (_pipeline == null) {
