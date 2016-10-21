@@ -15,10 +15,10 @@ public class MaxRectsPackAllotmentsExtractor : AllotmentsExtractor
 	[SerializeField]
 	private MaxRects.FreeRectChoiceHeuristic _allotmentFittingHeuristics = MaxRects.FreeRectChoiceHeuristic.RectContactPointRule;
 
-	static ArchitectureStyle FindSuitableArchitectureStyle (Rect area, Dictionary<ArchitectureStyle, float> architectureStylesProbabilities)
+	static ArchitectureStyle FindSuitableArchitectureStyle (Rect area, ICollection<ArchitectureStyle> architectureStyles)
 	{
 		List<ArchitectureStyle> suitableArchitectureStyles = new List<ArchitectureStyle> ();
-		foreach (ArchitectureStyle architectureStyle in architectureStylesProbabilities.Keys) {
+		foreach (ArchitectureStyle architectureStyle in architectureStyles) {
 			int tileWidth = architectureStyle.tileWidth;
 			int minWidth = (architectureStyle.minWidth + architectureStyle.spacing) * tileWidth;
 			int maxWidth = (architectureStyle.maxWidth + architectureStyle.spacing) * tileWidth;
@@ -37,12 +37,12 @@ public class MaxRectsPackAllotmentsExtractor : AllotmentsExtractor
 		return suitableArchitectureStyles [UnityEngine.Random.Range (0, suitableArchitectureStyles.Count)];
 	}
 	
-	public override void Execute (BaseGrid grid, ArchitectureStyle[] architectureStyleMap, List<Block> blocks)
+	public override void Execute (BaseGrid grid, ArchitectureStyle[] allArchitectureStyles, int[] architectureStylesMap, List<Block> blocks)
 	{
 		_allotments = new List<Allotment> ();
 		foreach (Block block in blocks) {
 			List<Rect> allPossibleAreas = new List<Rect> ();
-			foreach (ArchitectureStyle possibleArchitectureStyle in block.possibleArchitectureStyles) {
+			foreach (ArchitectureStyle possibleArchitectureStyle in block.architectureStyles) {
 				int tileWidth = possibleArchitectureStyle.tileWidth;
 				Rect[] possibleAreas = Combinatorics.PossibleAreas (possibleArchitectureStyle.minWidth + possibleArchitectureStyle.spacing, possibleArchitectureStyle.maxWidth + possibleArchitectureStyle.spacing, possibleArchitectureStyle.minDepth + possibleArchitectureStyle.spacing, possibleArchitectureStyle.maxDepth + possibleArchitectureStyle.spacing);
 				foreach (Rect possibleArea in possibleAreas) {
@@ -95,9 +95,8 @@ public class MaxRectsPackAllotmentsExtractor : AllotmentsExtractor
 			
 			int blockXStart = (int)block.center.x - block.width / 2;
 			int blockZStart = (int)block.center.y - block.depth / 2;
-			Dictionary<ArchitectureStyle, float> architectureStylesProbabilities = block.architectureStylesProbabilities;
 			foreach (Rect allotmentArea in allotmentAreas) {
-				ArchitectureStyle architectureStyle = FindSuitableArchitectureStyle (allotmentArea, architectureStylesProbabilities);
+				ArchitectureStyle architectureStyle = FindSuitableArchitectureStyle (allotmentArea, block.architectureStyles);
 				
 				bool hasLeftNeighbour = false;
 				bool hasRightNeighbour = false;

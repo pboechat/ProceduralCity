@@ -3,7 +3,7 @@ using Grid;
 
 public class IrregularRectangleGridRoadNetworkGenerator : RoadNetworkGenerator
 {
-	public override void Execute (RoadNetworkParameters roadNetworkParameters, float[] elevationMap, float[] populationMap, ArchitectureStyle[] architecturalStyleMap, Vector2[] destructionMap)
+	public override void Execute (RoadNetworkParameters roadNetworkParameters, float[] elevationMap, float[] populationMap, ArchitectureStyle[] allAchitectureStyles, int[] architecturalStylesMap)
 	{
 		_grid = IrregularRectangleGrid.Generate (roadNetworkParameters.gridWidth, 
 												 roadNetworkParameters.gridHeight, 

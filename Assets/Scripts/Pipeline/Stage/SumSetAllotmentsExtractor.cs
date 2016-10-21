@@ -5,7 +5,7 @@ using Grid;
 
 public class SumSetAllotmentsExtractor : AllotmentsExtractor
 {
-	public override void Execute (BaseGrid grid, ArchitectureStyle[] architectureStyleMap, List<Block> blocks)
+	public override void Execute (BaseGrid grid, ArchitectureStyle[] allArchitectureStyles, int[] architectureStylesMap, List<Block> blocks)
 	{
 		_allotments = new List<Allotment> ();
 		foreach (Block block in blocks) {

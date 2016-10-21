@@ -20,7 +20,7 @@ public class Pipeline : MonoBehaviour
 	[SerializeField]
 	private BuildingsMeshGenerator _buildingsMeshGenerator;
 	
-	public void Run (RoadNetworkParameters roadNetworkParameters, ArchitectureStyle[] architectureStyle)
+	public void Run (RoadNetworkParameters roadNetworkParameters, ArchitectureStyle[] allArchitectureStyles)
 	{
 		if (_cityMapsGenerator == null) {
 			throw new Exception ("_cityMapsGenerator == null");
@@ -57,16 +57,16 @@ public class Pipeline : MonoBehaviour
 		// ---
 		
 		// pipeline
-		_cityMapsGenerator.Execute (roadNetworkParameters, architectureStyle);
+		_cityMapsGenerator.Execute (roadNetworkParameters, allArchitectureStyles);
 		{
 			_terrainMeshGenerator.Execute (roadNetworkParameters, _cityMapsGenerator.elevationMap);
-			_roadNetworkGenerator.Execute (roadNetworkParameters, _cityMapsGenerator.elevationMap, _cityMapsGenerator.populationMap, _cityMapsGenerator.architecturalStyleMap, _cityMapsGenerator.destructionMap);
+			_roadNetworkGenerator.Execute (roadNetworkParameters, _cityMapsGenerator.elevationMap, _cityMapsGenerator.populationMap, allArchitectureStyles, _cityMapsGenerator.architecturalStylesMap);
 		} // parallel
 		{
 			_roadNetworkMeshGenerator.Execute (roadNetworkParameters, _roadNetworkGenerator.grid);
-			_blocksExtractor.Execute (_roadNetworkGenerator.grid, _cityMapsGenerator.architecturalStyleMap);
+			_blocksExtractor.Execute (_roadNetworkGenerator.grid, allArchitectureStyles, _cityMapsGenerator.architecturalStylesMap);
 		} // parallel
-		_allotmentsExtractor.Execute (_roadNetworkGenerator.grid, _cityMapsGenerator.architecturalStyleMap, _blocksExtractor.blocks);
+		_allotmentsExtractor.Execute (_roadNetworkGenerator.grid, allArchitectureStyles, _cityMapsGenerator.architecturalStylesMap, _blocksExtractor.blocks);
 		_buildingsGenerator.Execute (_allotmentsExtractor.allotments);
 		_buildingsMeshGenerator.Execute (_buildingsGenerator.buildings);
 	}

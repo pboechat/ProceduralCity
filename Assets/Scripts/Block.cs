@@ -14,34 +14,22 @@ public struct Block
         this.center = center;
         this.width = width;
         this.depth = depth;
-
         _architectureStylesProbabilities = new Dictionary<ArchitectureStyle, float>();
-        float u = 1.0f / architectureStylesSamples.Count;
+        float baseChance = 1.0f / architectureStylesSamples.Count;
         foreach (ArchitectureStyle architectureStyleSample in architectureStylesSamples)
         {
             if (_architectureStylesProbabilities.ContainsKey(architectureStyleSample))
-            {
-                _architectureStylesProbabilities[architectureStyleSample] += u;
-            }
-            else {
-                _architectureStylesProbabilities.Add(architectureStyleSample, u);
-            }
+                _architectureStylesProbabilities[architectureStyleSample] += baseChance;
+            else
+                _architectureStylesProbabilities.Add(architectureStyleSample, baseChance);
         }
     }
 
-    public ICollection<ArchitectureStyle> possibleArchitectureStyles
+    public ICollection<ArchitectureStyle> architectureStyles
     {
         get
         {
             return _architectureStylesProbabilities.Keys;
-        }
-    }
-
-    public Dictionary<ArchitectureStyle, float> architectureStylesProbabilities
-    {
-        get
-        {
-            return _architectureStylesProbabilities;
         }
     }
 
@@ -59,8 +47,8 @@ public struct Block
                     return architectureStylePercentage.Key;
                 }
             }
-            // FIXME:
-            throw new Exception("error");
+            // should never get here!
+            return null;
         }
     }
 }

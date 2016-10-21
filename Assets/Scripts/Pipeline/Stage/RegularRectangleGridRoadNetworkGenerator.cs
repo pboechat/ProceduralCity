@@ -3,7 +3,7 @@ using Grid;
 
 public class RegularRectangleGridRoadNetworkGenerator : RoadNetworkGenerator
 {
-	public override void Execute (RoadNetworkParameters roadNetworkParameters, float[] elevationMap, float[] populationMap, ArchitectureStyle[] architecturalStyleMap, Vector2[] destructionMap)
+	public override void Execute (RoadNetworkParameters roadNetworkParameters, float[] elevationMap, float[] populationMap, ArchitectureStyle[] allArchitectureStyles, int[] architecturalStylesMap)
 	{
 		int averageCellWidth = (roadNetworkParameters.maxCellWidth + roadNetworkParameters.minCellWidth) / 2;
 		int averageCellDepth = (roadNetworkParameters.maxCellDepth + roadNetworkParameters.minCellDepth) / 2;

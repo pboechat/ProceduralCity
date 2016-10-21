@@ -12,7 +12,7 @@ public abstract class AllotmentsExtractor : MonoBehaviour
 		}
 	}
 
-	public abstract void Execute (BaseGrid grid, ArchitectureStyle[] architectureStyleMap, List<Block> blocks);
+	public abstract void Execute (BaseGrid grid, ArchitectureStyle[] allArchitectureStyles, int[] architectureStylesMap, List<Block> blocks);
 
 }
 

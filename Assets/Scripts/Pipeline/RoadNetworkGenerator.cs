@@ -11,6 +11,6 @@ public abstract class RoadNetworkGenerator : MonoBehaviour
 		}
 	}
 	
-	public abstract void Execute (RoadNetworkParameters roadNetworkParameters, float[] elevationMap, float[] populationMap, ArchitectureStyle[] architecturalStyleMap, Vector2[] destructionMap);
+	public abstract void Execute (RoadNetworkParameters roadNetworkParameters, float[] elevationMap, float[] populationMap, ArchitectureStyle[] allArchitectureStyles, int[] architecturalStyleMap);
 	
 }

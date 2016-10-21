@@ -6,9 +6,29 @@ using Pattern;
 
 public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 {
+    enum GroundFloorOpts
+    {
+        NONE,
+        ITEMS,
+        FLOOR,
+        ITEMS_AND_FLOOR
+    }
+
 	private static readonly ICollection<Direction> ALL_FACADE_DIRECTIONS = new Direction[] { Direction.BACK, Direction.LEFT, Direction.RIGHT, Direction.FRONT };
 	[SerializeField]
 	private Color _colorMask;
+    [SerializeField]
+    private GroundFloorOpts _groundFloorsOpts = GroundFloorOpts.ITEMS_AND_FLOOR;
+    [SerializeField]
+    private bool _performFacadeOperations = true;
+    [SerializeField]
+    private bool _addFacadeItems = true;
+    [SerializeField]
+    private bool _addHeaders = true;
+    [SerializeField]
+    private bool _addRailings = true;
+    [SerializeField]
+    private bool _addRooftopItems = true;
 	
 	public Matrix4x4 GetBuildingSideTransform (Building building, Direction direction)
 	{
@@ -75,7 +95,7 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 		transforms.Add (localTransform);
 	}
 
-	void AttachFacadeItems (Facade facade, Color hue, float facadeYOffset, Matrix4x4 worldTransform, List<CombineInstance> combineInstances)
+	void AddFacadeItems (Facade facade, Color hue, float facadeYOffset, Matrix4x4 worldTransform, List<CombineInstance> combineInstances)
 	{
 		ArchitectureStyle architectureStyle = facade.architectureStyle;
 		
@@ -249,7 +269,7 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 		combineInstances.AddRange (newCombineInstances);
 	}
 	
-	void CreateGroundFloorItem (Building building, IModel groundFloorItem, Color hue, List<CombineInstance> combineInstances)
+	void AddGroundFloorItems (Building building, IModel groundFloorItem, Color hue, List<CombineInstance> combineInstances)
 	{
 		Mesh groundFloorItemMesh;
 		Matrix4x4 groundFloorItemModelTransform;
@@ -649,7 +669,7 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 		foreach (Facade facade in building.facades) {
 			Matrix4x4 worldTransform = GetBuildingSideTransform (building, facade.direction);
 			
-			if (architectureStyle.usesOperations) {
+			if (_performFacadeOperations && architectureStyle.usesOperations) {
 				List<SymbolicOperations.SymbolGroup<FacadeOperation>> operationGroups = SymbolicOperations.ExtractGroups (facade.operationsPattern.ToMatrix (), facade.widthInTiles, facade.heightInTiles);
 				for (int i = 0; i < operationGroups.Count; i++) {
 					Mesh mesh = CreateMeshForSymbolGroup (facade, uvRect1, uvRect2, uvRect3, uvRect4, operationGroups [i], hue, facadeYOffset);
@@ -669,11 +689,12 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 				combineInstances.Add (combineInstance);
 			}
 			
-			AttachFacadeItems (facade, hue, facadeYOffset, worldTransform, combineInstances);
+            if (_addFacadeItems)
+			    AddFacadeItems (facade, hue, facadeYOffset, worldTransform, combineInstances);
 		}
 	}
 	
-	void CreateFloor (Building building, Rect floorTextureRect, Rect floorBumpTextureRect, List<CombineInstance> combineInstances)
+	void AddFloor (Building building, Rect floorTextureRect, Rect floorBumpTextureRect, List<CombineInstance> combineInstances)
 	{
 		ArchitectureStyle architectureStyle = building.architectureStyle;
 		float textureAtlasSize = (float)architectureStyle.textureAtlas.size;
@@ -869,9 +890,15 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 		
 		buildingsGameObject.transform.position = Vector3.zero;
 		buildingsGameObject.transform.rotation = Quaternion.identity;
-		
-		foreach (Building building in buildings) {
-			GameObject buildingGameObject = new GameObject ("Building");
+
+        Color[] hues = new Color[buildings.Count];
+        for (int i = 0; i < buildings.Count; i++)
+            hues[i] = buildings[i].architectureStyle.randomHue;
+
+        for (int i = 0; i < buildings.Count; i++) {
+            Building building = buildings[i];
+
+            GameObject buildingGameObject = new GameObject ("Building");
 	
 			buildingGameObject.transform.parent = buildingsGameObject.transform;
 			buildingGameObject.transform.position = new Vector3 (building.x, 0, building.y);
@@ -880,7 +907,7 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 			
 			Header header = architectureStyle.header;
 			
-			Color hue = architectureStyle.randomHue;
+			Color hue = hues[i];
 			Rect wallTextureRect;
 			Rect wallBumpTextureRect;
 			Rect terraceTextureRect;
@@ -896,79 +923,91 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 			
 			IResultSet resultSet;
 			float facadeYOffset = 0;
-            switch (architectureStyle.groundFloor)
+            if (_groundFloorsOpts != GroundFloorOpts.NONE)
             {
-                case GroundFloor.FIRST_FLOOR_BARE:
-                    facadeYOffset = 0;
-                    break;
-                case GroundFloor.FIRST_FLOOR_FOOTER:
-                    resultSet = Repository.List("ground_floor").Filter("type", "footer").Filter("style", architectureStyle.name);
-
-                    if (resultSet.Count() == 0)
-                    {
-                        throw new Exception("architecture style doesn't have any footer model");
-                    }
-
-                    IModel footerModel = resultSet.Random();
-                    facadeYOffset = footerModel.MetadataAsFloat("height");
-
-                    CreateGroundFloorItem(building, footerModel, hue, buildingCombineInstances);
-
-                    break;
-                case GroundFloor.STORE:
-                    // TODO:
-                    facadeYOffset = 0;
-                    break;
-                case GroundFloor.PILOTIS:
-                    resultSet = Repository.List("ground_floor").Filter("type", "pilotis").Filter("style", architectureStyle.name);
-
-                    if (resultSet.Count() == 0)
-                    {
-                        throw new Exception("architecture style doesn't have any pilotis model");
-                    }
-
-                    IModel pilotisModel = resultSet.Random();
-                    facadeYOffset = pilotisModel.MetadataAsInt("height");
-
-                    CreateGroundFloorItem(building, pilotisModel, hue, buildingCombineInstances);
-                    // TODO:
-                    CreateFloor(building, terraceTextureRect, terraceBumpTextureRect, buildingCombineInstances);
-
-                    break;
-                default:
-                    // FIXME: checking invariants
-                    throw new Exception("unknown ground floor: " + architectureStyle.groundFloor);
-            }
-
-            // ==============================
-            // Header
-            // ==============================
-
-            if (header != Header.NONE)
-            {
-                resultSet = Repository.List("header").Filter("style", architectureStyle.name);
-
-                if (resultSet.Count() == 0)
+                switch (architectureStyle.groundFloor)
                 {
-                    throw new Exception("architecture style doesn't have any header model");
+                    case GroundFloor.FIRST_FLOOR_BARE:
+                        facadeYOffset = 0;
+                        break;
+                    case GroundFloor.FIRST_FLOOR_FOOTER:
+                        resultSet = Repository.List("ground_floor").Filter("type", "footer").Filter("style", architectureStyle.name);
+
+                        if (resultSet.Count() == 0)
+                        {
+                            throw new Exception("architecture style doesn't have any footer model");
+                        }
+
+                        IModel footerModel = resultSet.Random();
+                        facadeYOffset = footerModel.MetadataAsFloat("height");
+
+                        if (_groundFloorsOpts != GroundFloorOpts.FLOOR)
+                            AddGroundFloorItems(building, footerModel, hue, buildingCombineInstances);
+
+                        break;
+                    case GroundFloor.STORE:
+                        // TODO:
+                        facadeYOffset = 0;
+                        break;
+                    case GroundFloor.PILOTIS:
+                        resultSet = Repository.List("ground_floor").Filter("type", "pilotis").Filter("style", architectureStyle.name);
+
+                        if (resultSet.Count() == 0)
+                        {
+                            throw new Exception("architecture style doesn't have any pilotis model");
+                        }
+
+                        IModel pilotisModel = resultSet.Random();
+                        facadeYOffset = pilotisModel.MetadataAsInt("height");
+
+                        if (_groundFloorsOpts != GroundFloorOpts.FLOOR)
+                            AddGroundFloorItems(building, pilotisModel, hue, buildingCombineInstances);
+
+                        if (_groundFloorsOpts != GroundFloorOpts.ITEMS)
+                            AddFloor(building, terraceTextureRect, terraceBumpTextureRect, buildingCombineInstances);
+
+                        break;
+                    default:
+                        // FIXME: checking invariants
+                        throw new Exception("unknown ground floor: " + architectureStyle.groundFloor);
                 }
-
-                IModel headerModel = resultSet.Random();
-
-                CreateHeader(building, headerModel, hue, facadeYOffset, buildingCombineInstances);
             }
 
-            // ==============================
-            // Railing
-            // ==============================
-
-            if (header != Header.ALL_AROUND)
+            if (_addHeaders)
             {
-                IModel railingModel = Repository.List("railing").Filter("style", architectureStyle.name).Single();
+                // ==============================
+                // Header
+                // ==============================
 
-                if (railingModel != null)
+                if (header != Header.NONE)
                 {
-                    CreateRailing(building, railingModel, hue, facadeYOffset, buildingCombineInstances);
+                    resultSet = Repository.List("header").Filter("style", architectureStyle.name);
+
+                    if (resultSet.Count() == 0)
+                    {
+                        throw new Exception("architecture style doesn't have any header model");
+                    }
+
+                    IModel headerModel = resultSet.Random();
+
+                    CreateHeader(building, headerModel, hue, facadeYOffset, buildingCombineInstances);
+                }
+            }
+            
+            if (_addRailings)
+            { 
+                // ==============================
+                // Railing
+                // ==============================
+
+                if (header != Header.ALL_AROUND)
+                {
+                    IModel railingModel = Repository.List("railing").Filter("style", architectureStyle.name).Single();
+
+                    if (railingModel != null)
+                    {
+                        CreateRailing(building, railingModel, hue, facadeYOffset, buildingCombineInstances);
+                    }
                 }
             }
 
@@ -983,32 +1022,39 @@ public class CombinedBuildingsMeshGenerator : BuildingsMeshGenerator
 			// ==============================
 			
 			CreateFacades (building, wallTextureRect, wallBumpTextureRect, terraceTextureRect, terraceBumpTextureRect, hue, facadeYOffset, buildingCombineInstances);
-			
-			// ==============================
-			// Roof top
-			// ==============================
-			
-			List<CombineInstance> rooftopCombinedInstances = new List<CombineInstance> ();
-			AddRooftopItems (building, facadeYOffset, rooftopCombinedInstances);
-			
-			Mesh buildingMesh = new Mesh ();
+
+            // ==============================
+            // Rooftop items
+            // ==============================
+
+            if (_addRooftopItems)
+            {
+                List<CombineInstance> rooftopCombinedInstances = new List<CombineInstance>();
+                AddRooftopItems(building, facadeYOffset, rooftopCombinedInstances);
+
+                GameObject rooftopGameObject = new GameObject("Rooftop Items");
+
+                rooftopGameObject.transform.parent = buildingGameObject.transform;
+                rooftopGameObject.transform.localPosition = Vector3.zero;
+                rooftopGameObject.transform.localRotation = Quaternion.identity;
+
+                Mesh rooftopItemsMesh = new Mesh();
+                rooftopItemsMesh.CombineMeshes(rooftopCombinedInstances.ToArray());
+                rooftopGameObject.AddComponent<MeshFilter>().mesh = rooftopItemsMesh;
+
+                rooftopGameObject.AddComponent<MeshRenderer>().sharedMaterial = architectureStyle.textureAtlasMaterial;
+            }
+
+            // ==============================
+            // Final mesh
+            // ==============================
+
+            Mesh buildingMesh = new Mesh ();
 			buildingMesh.CombineMeshes (buildingCombineInstances.ToArray ());
 			buildingGameObject.AddComponent<MeshFilter> ().mesh = buildingMesh;
 			
 			buildingGameObject.AddComponent<MeshRenderer> ().sharedMaterial = architectureStyle.textureAtlasMaterial;
 			buildingGameObject.AddComponent<MeshCollider> ().sharedMesh = buildingMesh;
-
-            GameObject rooftopGameObject = new GameObject("Rooftop Items");
-
-            rooftopGameObject.transform.parent = buildingGameObject.transform;
-            rooftopGameObject.transform.localPosition = Vector3.zero;
-            rooftopGameObject.transform.localRotation = Quaternion.identity;
-
-            Mesh rooftopItemsMesh = new Mesh();
-            rooftopItemsMesh.CombineMeshes(rooftopCombinedInstances.ToArray());
-            rooftopGameObject.AddComponent<MeshFilter>().mesh = rooftopItemsMesh;
-
-            rooftopGameObject.AddComponent<MeshRenderer>().sharedMaterial = architectureStyle.textureAtlasMaterial;
         }
 	}
 

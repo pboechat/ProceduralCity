@@ -12,7 +12,7 @@ public abstract class BlocksExtractor : MonoBehaviour
 		}
 	}
 
-	public abstract void Execute (BaseGrid grid, ArchitectureStyle[] architectureStyleMap);
+	public abstract void Execute (BaseGrid grid, ArchitectureStyle[] allArchitectureStyles, int[] architectureStylesMap);
 
 }
 
