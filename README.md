@@ -3,6 +3,8 @@ Procedural City
 
 **Procedural City** is a demo that uses a few tricks to build random nice-looking 3D cities.
 
+![Screenshot](http://pedroboechat.com/images/ProceduralCity.png)
+
 ----------
 
 ### Idea
